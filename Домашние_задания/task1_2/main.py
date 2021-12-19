@@ -58,15 +58,19 @@
 #     'С': 'S'
 #
 # }
+# """в алфавит вынесены только буквы используемые в списке имен (при вводе новых имен в список - словарь дополнить)"""
 # names = ("Саша", "Женя")
 # surnames = ("Степаненко", "Иващенко", "Ким")
+
 # def generate_person(n):
 #     dict_for_all = []
 #     for counter in range(1, n+1):
 #         name = random.choice(names)
+# """выбор имени"""
 #         len_name = len(name)
 #
 #         def gen_login():
+# """транслитерация логина из имени по словарю"""
 #             login_ = str("")
 #             for i in range(0, len_name):
 #                 letter = Alph_[name[i]]
