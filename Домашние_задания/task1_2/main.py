@@ -37,73 +37,73 @@
 #         print(f'{word[(middle-1)::-1]}{word[:middle:-1]}{word[middle]}')
 
 # Task 7
-# import datetime
-# import random
-# from faker import Faker
-# import string
-#
-# import json
-# Faker.seed(random)
-# fake = Faker()
-#
-# Alph_ = {
-#     'а': 'a',
-#     'е': 'e',
-#     'ж': 'zh',
-#     'н': 'n',
-#     'с': 's',
-#     'ш': 'sh',
-#     'я': 'ya',
-#     'Ж': 'Zh',
-#     'С': 'S'
-#
-# }
-# """в алфавит вынесены только буквы используемые в списке имен (при вводе новых имен в список - словарь дополнить)"""
-# names = ("Саша", "Женя")
-# surnames = ("Степаненко", "Иващенко", "Ким")
-
-# def generate_person(n):
-#     dict_for_all = []
-#     for counter in range(1, n+1):
-#         name = random.choice(names)
-# """выбор имени"""
-#         len_name = len(name)
-#
-#         def gen_login():
-# """транслитерация логина из имени по словарю"""
-#             login_ = str("")
-#             for i in range(0, len_name):
-#                 letter = Alph_[name[i]]
-#                 login_ = login_ + letter
-#             return login_
-#         def password():
-#             pass_ = string.digits + string.ascii_letters
-#             return "".join(random.choice(pass_) for _ in range(6))
-#         dict_ = {"Number in system": counter,
-#             "name": name, "surname": random.choice(surnames),
-#             "login": "@" + gen_login(), "password": password(),
-#             "email": gen_login() + "@" + gen_login() + ".com",
-#             "phone": "+7" + fake.phone_number(),
-#             "register_time": str(datetime.datetime.now())
-#             }
-#         dict_for_all.append(dict_)
-#         counter += 1
-#     return dict_for_all
-#
-# def write_it_in_json(n):
-#     with open('package.json', 'w') as f:
-#         return json.dump(generate_person(n), f, indent=4, ensure_ascii=False)
-#
-#
-# if __name__ == "__main__":
-#     write_it_in_json(10)
-#     print(generate_person(10))
-
-# Task 8
 import datetime
+import random
+from faker import Faker
+import string
+
+import json
+Faker.seed(random)
+fake = Faker()
+
+Alph_ = {
+    'а': 'a',
+    'е': 'e',
+    'ж': 'zh',
+    'н': 'n',
+    'с': 's',
+    'ш': 'sh',
+    'я': 'ya',
+    'Ж': 'Zh',
+    'С': 'S'
+
+}
+"""в алфавит вынесены только буквы используемые в списке имен (при вводе новых имен в список - словарь дополнить)"""
+names = ("Саша", "Женя")
+surnames = ("Степаненко", "Иващенко", "Ким")
+
+def generate_person(n):
+    dict_for_all = []
+    for counter in range(1, n+1):
+        """выбор имени из списка"""
+        name = random.choice(names)
+        len_name = len(name)
+
+        def gen_login():
+            """транслитерация логина из имени по словарю"""
+            login_ = str("")
+            for i in range(0, len_name):
+                letter = Alph_[name[i]]
+                login_ = login_ + letter
+            return login_
+        def password():
+            pass_ = string.digits + string.ascii_letters
+            return "".join(random.choice(pass_) for _ in range(6))
+        dict_ = {"Number in system": counter,
+            "name": name, "surname": random.choice(surnames),
+            "login": "@" + gen_login(), "password": password(),
+            "email": gen_login() + "@" + gen_login() + ".com",
+            "phone": "+7" + fake.phone_number(),
+            "register_time": str(datetime.datetime.now())
+            }
+        dict_for_all.append(dict_)
+        counter += 1
+    return dict_for_all
+
+def write_it_in_json(n):
+    with open('package.json', 'w') as f:
+        return json.dump(generate_person(n), f, indent=4, ensure_ascii=False)
+
 
 if __name__ == "__main__":
-    print(datetime.datetime.today().strftime('%Y-%m-%d'))
+    write_it_in_json(10)
+    print(generate_person(10))
+
+# Task 8
+# import datetime
+#
+# if __name__ == "__main__":
+#     print(datetime.datetime.today().strftime('%Y-%m-%d'))
 
 
 
