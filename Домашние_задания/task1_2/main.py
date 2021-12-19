@@ -83,7 +83,7 @@ def generate_person(n):
             "name": name, "surname": random.choice(surnames),
             "login": "@" + gen_login(), "password": password(),
             "email": gen_login() + "@" + gen_login() + ".com",
-            "phone": "+7" + fake.phone_number(),
+            "phone": fake.phone_number(),
             "register_time": str(datetime.datetime.now())
             }
         dict_for_all.append(dict_)
